@@ -4,13 +4,13 @@ This repo contains an example with code and instructions for the deployment of a
 
 The `dev` folder contains all the code to create and train the most simple neural network to perform classification on a MNIST dataset. This very minimal, barebone example, shows the basics to easily extend the structure to much more complex models and projects.
 
-## Train and export the model for deployment
+# Train and export the model for deployment
 
-Follow the instructions in the `dev` folder.
+Follow the instructions in the `dev` folder
 
-## Deployment
+# Deployment
 
-### Local deploy
+## Local deploy
 
 Before deploying the model to the cloud, it's best practice to test it locally. To do that, we can use Azure ML’s local endpoint feature to test the actual endpoint and deployment on your local machine, using a Docker container.
 
@@ -34,7 +34,7 @@ Now you're ready to deploy to the cloud. If something went wrong, you can easily
 
 `az ml online-deployment create -f cloud/deployment/deployment-local.yaml --local --vscode-debug`
 
-### Cloud deploy
+## Cloud deploy
 
 The commands remain basically unaltered. Simply we remove the `--local` flag:
 
@@ -45,3 +45,7 @@ The commands remain basically unaltered. Simply we remove the `--local` flag:
 Once these commands are succesfully executed, we can test our cloud deployment:
 
 `az ml online-endpoint invoke --name mnist-endpoint-865021 --request-file cloud/mnist-model-1/sample-request.json`
+
+# More
+
+If you have any questions or doubts, feel free to open an issue. I will be happy to help!
