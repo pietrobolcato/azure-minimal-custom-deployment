@@ -6,7 +6,7 @@ The `dev` folder contains all the code to create and train the most simple neura
 
 # Train and export the model for deployment
 
-Follow the instructions in the `dev` folder
+Follow the instructions inside the `dev` folder
 
 # Deployment
 
