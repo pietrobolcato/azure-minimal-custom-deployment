@@ -47,4 +47,4 @@ def run(raw_data):
     logits = model(img_tensor)
     pred = np.argmax(logits.detach().numpy(), axis=1)
 
-    return pred
+    return pred.tolist()
