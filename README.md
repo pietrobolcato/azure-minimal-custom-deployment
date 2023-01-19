@@ -1,4 +1,4 @@
-# What is this
+# Introduction
 
 This repo contains an example with code and instructions for the deployment of a minimal custom ML model on the Azure ML managed online endpoint, without using MLFlow. This focuses on deployment only — training on the cloud is not covered here.
 
