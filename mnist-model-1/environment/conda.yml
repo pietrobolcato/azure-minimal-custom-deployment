@@ -1,0 +1,12 @@
+name: mnist_azure_inference
+channels:
+  - anaconda
+  - pytorch
+  - conda-forge
+dependencies:
+  - python==3.8.16
+  - pytorch==1.13.1
+  - torchvision==0.14.1
+  - pip
+  - pip:
+      - azureml-defaults
