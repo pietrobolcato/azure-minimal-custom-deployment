@@ -1,0 +1,4 @@
+$schema: https://azuremlschemas.azureedge.net/latest/kubernetesOnlineEndpoint.schema.json
+name: mnist-endpoint-927702
+compute: azureml:ktest-compute
+auth_mode: key

@@ -1,0 +1,25 @@
+$schema: https://azuremlschemas.azureedge.net/latest/kubernetesOnlineDeployment.schema.json
+name: blue
+type: kubernetes
+endpoint_name: mnist-endpoint-927702
+model: azureml:mnist-model@latest
+code_configuration:
+  code: ../mnist-model-1/onlinescoring
+  scoring_script: score.py
+environment:
+  name: minimal-inference-plus-conda
+  image: mcr.microsoft.com/azureml/minimal-ubuntu20.04-py38-cpu-inference:latest
+  conda_file: ../mnist-model-1/environment/conda.yml
+request_settings:
+  request_timeout_ms: 3000
+  max_queue_wait_ms: 3000
+resources:
+  requests:
+    cpu: "0.1"
+    memory: "0.1Gi"
+  limits:
+    cpu: "0.2"
+    memory: "200Mi"
+instance_count: 1
+scale_settings:
+  type: default
