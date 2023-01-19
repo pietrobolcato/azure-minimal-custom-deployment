@@ -1,3 +1,5 @@
+"""This file implements the scoring methods for the online ML endpoint"""
+
 import base64
 import logging
 import json
@@ -10,6 +12,11 @@ from io import BytesIO
 
 
 def init():
+    """
+    This method is called on initialization of the endpoint.
+    It loads the model and the preprocessing function used in the inference method
+    """
+
     global model, transform
 
     # AZUREML_MODEL_DIR is an environment variable created during deployment.
@@ -28,6 +35,11 @@ def init():
 
 
 def run(raw_data):
+    """
+    It accepts a json as input, where the image is encoded in base64.
+    Performs inference and return the result
+    """
+
     image_data = json.loads(raw_data)["image"].encode()
     image = Image.open(BytesIO(base64.decodebytes(image_data))).convert("L")
 
@@ -35,4 +47,4 @@ def run(raw_data):
     logits = model(img_tensor)
     pred = np.argmax(logits.detach().numpy(), axis=1)
 
-    return pred.tolist()
+    return pred
