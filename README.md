@@ -36,11 +36,15 @@ If something went wrong, you can easily debug what is going on using Azure's deb
 
 ## Cloud deploy
 
-Now you're ready to deploy to the cloud. The commands remain basically unaltered. Simply we remove the `--local` flag:
+Now you're ready to deploy to the cloud. First, we have to register the model:
+
+`az ml model create --path cloud/mnist-model-1/model --name mnist-model --version 1`
+
+Then, the following commands remain basically unaltered with respect to local development. We simply remove the `--local` flag:
 
 `az ml online-endpoint create -f cloud/deployment/endpoint.yaml`
 
-`az ml online-deployment create -f cloud/deployment/deployment.yaml`
+`az ml online-deployment create -f cloud/deployment/deployment.yaml --all-traffic`
 
 Once these commands are succesfully executed, we can test our cloud deployment:
 
