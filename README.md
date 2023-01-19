@@ -26,7 +26,7 @@ After the successful execution of the commands, you can test your local endpoint
 
 You should get the response: `[0]`, which shows that the classifier correctly classified the image input as the number 0.
 
-Now you're ready to deploy to the cloud. If something went wrong, you can easily debug what is going on using Azure's debug dev container. The commands remains the unaltered, and have only the `--vscode-debug` flag added to them:
+If something went wrong, you can easily debug what is going on using Azure's debug dev container. The commands remains the unaltered, and have only the `--vscode-debug` flag added to them:
 
 `az ml online-endpoint delete -n mnist-endpoint-865021 -y --local`
 
@@ -36,7 +36,7 @@ Now you're ready to deploy to the cloud. If something went wrong, you can easily
 
 ## Cloud deploy
 
-The commands remain basically unaltered. Simply we remove the `--local` flag:
+Now you're ready to deploy to the cloud. The commands remain basically unaltered. Simply we remove the `--local` flag:
 
 `az ml online-endpoint create -f cloud/deployment/endpoint.yaml`
 
