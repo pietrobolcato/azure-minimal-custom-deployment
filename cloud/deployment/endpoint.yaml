@@ -1,3 +1,3 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json
-name: mnist-endpoint-865021
+name: mnist-endpoint-271934-mlflow
 auth_mode: key

@@ -1,14 +1,6 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
 name: blue
-endpoint_name: mnist-endpoint-865021
-model: azureml:mnist-model@latest
-code_configuration:
-  code: ../mnist-model-1/onlinescoring
-  scoring_script: score.py
-environment:
-  $schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
-  name: minimal-inference-plus-conda
-  image: mcr.microsoft.com/azureml/minimal-ubuntu20.04-py38-cpu-inference:latest
-  conda_file: ../mnist-model-1/environment/conda.yml
+endpoint_name: mnist-endpoint-271934-mlflow
+model: azureml:mnist-model-1-mlflow@latest
 instance_type: Standard_DS2_v2
 instance_count: 1
