@@ -8,7 +8,7 @@ This part of the repo contains the code to train, test and export the classifier
 
 2- Start training `python train.py`
 
-3- Convert generated .ckpt to torchscript: `python export_to_pt.py -i $GENERATED_CKPT_PATH$ -o $OUT_PT_PATH$`
+3- Convert generated .ckpt to mlflow model: `python mlfow_export.py -i $GENERATED_CKPT_PATH$ -o $OUT_PT_PATH$`
 
 4- Test inference `python inference.py -m $OUT_PT_PATH$ -i $TEST_IMAGE_PATH$`
 
