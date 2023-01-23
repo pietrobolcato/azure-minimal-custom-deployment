@@ -1,0 +1,20 @@
+flavors:
+  python_function:
+    artifacts:
+      pytorch_model:
+        path: artifacts/tmp2glf9gzr
+        uri: C:\Users\pietr\AppData\Local\Temp\tmp2glf9gzr
+    cloudpickle_version: 2.2.1
+    code: code
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.8.10
+mlflow_version: 2.1.1
+model_uuid: 70ced0e424cc41c6982a79d429392dd7
+signature:
+  inputs: '[{"name": "image", "type": "string"}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int32", "shape": [-1, 1]}}]'
+utc_time_created: "2023-01-20 21:25:09.060142"

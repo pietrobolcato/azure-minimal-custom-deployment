@@ -1,0 +1,24 @@
+flavors:
+  python_function:
+    code: code
+    data: data
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pytorch
+    pickle_module_name: mlflow.pytorch.pickle_module
+    python_version: 3.8.10
+  pytorch:
+    code: code
+    model_data: data
+    pytorch_version: 1.13.1+cpu
+mlflow_version: 2.1.1
+model_uuid: acbdea12cb6c47c4893fca0059c095c8
+signature:
+  inputs:
+    '[{"type": "tensor", "tensor-spec": {"dtype": "uint8", "shape": [-1, 28,
+    28, 1]}}]'
+  outputs:
+    '[{"type": "tensor", "tensor-spec": {"dtype": "float32", "shape": [-1,
+    10]}}]'
+utc_time_created: "2023-01-20 21:25:04.027453"
