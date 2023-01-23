@@ -1,6 +1,6 @@
 # Introduction
 
-This repo contains an example with code and instructions for the deployment of a minimal custom ML model on the Azure ML managed online endpoint, without using MLFlow. This focuses on deployment only — training on the cloud is not covered here.
+This repo contains an example with code and instructions for the deployment of a minimal custom ML model on the Azure ML managed online endpoint, using MLFlow. This focuses on deployment only — training on the cloud is not covered here.
 
 The `dev` folder contains all the code to create and train the most simple neural network to perform classification on a MNIST dataset. This very minimal, barebone example, shows the basics to easily extend the structure to much more complex models and projects.
 
@@ -12,35 +12,17 @@ Follow the instructions inside the `dev` folder
 
 ## Local deploy
 
-Before deploying the model to the cloud, it's best practice to test it locally. To do that, we can use Azure ML’s local endpoint feature to test the actual endpoint and deployment on your local machine, using a Docker container.
+Before deploying the model to the cloud, it's best practice to test it locally. Given that we're deploying a MLFlow model, testing is easier. Run the prediction on your model using MLFlow. If everything works as expected, so it will when deployed on the cloud.
 
-Run the following commands to create the endpoint and the deployment for it (note the `--local` flag):
-
-`az ml online-endpoint create -f cloud/deployment/endpoint.yaml --local`
-
-`az ml online-deployment create -f cloud/deployment/deployment-local.yaml --local`
-
-After the successful execution of the commands, you can test your local endpoint:
-
-`az ml online-endpoint invoke --name mnist-endpoint-865021 --request-file cloud/mnist-model-1/sample-request.json --local`
-
-You should get the response: `[0]`, which shows that the classifier correctly classified the image input as the number 0.
-
-If something went wrong, you can easily debug what is going on using Azure's debug dev container. The commands remains the unaltered, and have only the `--vscode-debug` flag added to them:
-
-`az ml online-endpoint delete -n mnist-endpoint-865021 -y --local`
-
-`az ml online-endpoint create -f cloud/deployment/endpoint.yaml --local`
-
-`az ml online-deployment create -f cloud/deployment/deployment-local.yaml --local --vscode-debug`
+`mlflow models predict --model-uri cloud/mnist-model-1-mlflow --input-path "cloud/sample-request.json" --content-type json`
 
 ## Cloud deploy
 
 Now you're ready to deploy to the cloud. First, we have to register the model:
 
-`az ml model create --path cloud/mnist-model-1/model --name mnist-model --version 1`
+`az ml model create --path cloud/mnist-model-1-mlflow --name mnist-model-1-mlflow --version 1 --type mlflow_model`
 
-Then, the following commands remain basically unaltered with respect to local development. We simply remove the `--local` flag:
+Then, the following commands create and endpoint and its respective deployment:
 
 `az ml online-endpoint create -f cloud/deployment/endpoint.yaml`
 
@@ -48,7 +30,7 @@ Then, the following commands remain basically unaltered with respect to local de
 
 Once these commands are succesfully executed, we can test our cloud deployment:
 
-`az ml online-endpoint invoke --name mnist-endpoint-865021 --request-file cloud/mnist-model-1/sample-request.json`
+`az ml online-endpoint invoke --name mnist-endpoint-271934-mlflow --request-file cloud/sample-request.json`
 
 # More
 
