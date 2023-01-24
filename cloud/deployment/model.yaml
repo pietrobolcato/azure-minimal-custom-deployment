@@ -1,0 +1,3 @@
+$schema: https://azuremlschemas.azureedge.net/latest/model.schema.json
+name: mnist-model
+path: ../mnist-model-1/model
