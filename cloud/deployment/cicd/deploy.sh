@@ -1,7 +1,7 @@
 ENDPOINT="mnist-endpoint-865021"
 
 echo "- Creating model..."
-az ml model create -f ../model.yaml
+az ml model create -f ../model.yaml --tags "release-id=$GITHUB_REF_NAME" "author=$GITHUB_ACTOR"
 echo "- Model created succesfully"
 
 echo "- Checking if endpoint exists already"
