@@ -1,0 +1,26 @@
+name: deploy
+on:
+  pull_request:
+  push:
+  # allows this Action to be triggered manually
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repo
+        uses: actions/checkout@v2
+      - name: install Azure cli
+        uses: pietrobolcato/install-azure-cli-action@v1
+      - name: azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+      - name: setup
+        run: bash setup.sh
+        working-directory: cloud/deployment/cicd
+        continue-on-error: true
+      - name: deploy
+        run: bash deploy.sh
+        working-directory: cloud/deployment/cicd
